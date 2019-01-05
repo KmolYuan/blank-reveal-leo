@@ -9,11 +9,9 @@
 <preferences/>
 <find_panel_settings/>
 <vnodes>
-<v t="40323230.20171027160129.1"><vh>@settings</vh>
+<v t="40323230.20171027160129.1" a="E"><vh>@settings</vh>
 <v t="40323230.20171027160129.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="40323230.20171027160129.3"><vh>@string initial_split_orientation = horizontal</vh></v>
-<v t="40323230.20171027160129.4"><vh>協同網誌編寫規範</vh></v>
-<v t="40323230.20171027160129.5"><vh>md 檔案範例</vh></v>
 </v>
 <v t="40323230.20171027160226.1" a="E"><vh>@clean index.html</vh>
 <v t="40323230.20171027160338.1" a="E"><vh>head</vh>
@@ -105,36 +103,6 @@ QLineEdit#editorLabel {
 }</t>
 <t tx="40323230.20171027160129.3">horizontal: body pane to the left
 vertical: body pane on the botton</t>
-<t tx="40323230.20171027160129.4">協同成員的 .leo 檔案
-
-    每一位協同者, 各自可以在 users 目錄下擁有一個 .leo 檔案, 用來維護各自位於 content 目錄下的 .md 檔案,
-    
-    例如: user yen 的 .leo 檔案位於 users/yen.leo
-
-協同成員的 .md 檔案命名
-
-    由於各成員所編寫的 .md 檔案都位於 content 目錄下, 因此必須在各負責的 .md 檔案名稱冠上用戶名稱,
-    
-    例如: 由 yen 負責編寫的 .md 檔案, 特別命名為 yen_20160106.md, 若一天有兩篇以上文章, 則取 yen_20160106-1.md
-    
-    當使用者要利用 pelican 在近端轉換網誌時, 必須使用 local-pelican 按鈕, 若要送到 github pages 網站, 則必須透過 gh-pages-pelican 按鈕轉檔.
-
-pages 文章
-
-    寫在 content/pages 目錄中的 .md 檔案, 將會被轉為網誌 pages 內容
-
-</t>
-<t tx="40323230.20171027160129.5">@language md
-Title: 文章標題
-Category: 類別
-Tags: 標籤
-Author: kmol
-
-這裡放入文章摘要
-
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-
-這裡為文章主要內容</t>
 <t tx="40323230.20171027160226.1">@language html
 &lt;!doctype html&gt;
 &lt;html&gt;
@@ -206,18 +174,18 @@ Reveal.initialize({
         {src: 'plugin/markdown/markdown.js'},
         {src: 'plugin/notes/notes.js', async: true},
         {src: 'plugin/math/math.js', async: true},
-        {src: 'plugin/highlight/highlight.js', async: true, callback: () =&gt; {
-            hljs.initHighlightingOnLoad();
-        }}
+        {src: 'plugin/highlight/highlight.js', async: true, callback: () =&gt; hljs.initHighlightingOnLoad()}
     ]
 });
 </t>
 <t tx="leo.20190105235527.1">@language javascript
-var link = document.createElement('link');
-link.rel = 'stylesheet';
-link.type = 'text/css';
-link.href = 'css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css';
-document.getElementsByTagName('head')[0].appendChild(link);
+(function() {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+})();
 </t>
 </tnodes>
 </leo_file>
