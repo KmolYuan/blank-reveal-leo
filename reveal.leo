@@ -9,16 +9,20 @@
 <preferences/>
 <find_panel_settings/>
 <vnodes>
-<v t="40323230.20171027160129.1" a="E"><vh>@settings</vh>
+<v t="40323230.20171027160129.1"><vh>@settings</vh>
 <v t="40323230.20171027160129.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="40323230.20171027160129.3"><vh>@string initial_split_orientation = horizontal</vh></v>
 <v t="40323230.20171027160129.4"><vh>協同網誌編寫規範</vh></v>
 <v t="40323230.20171027160129.5"><vh>md 檔案範例</vh></v>
 </v>
 <v t="40323230.20171027160226.1" a="E"><vh>@clean index.html</vh>
-<v t="40323230.20171027160338.1"><vh>head</vh></v>
+<v t="40323230.20171027160338.1" a="E"><vh>head</vh>
+<v t="leo.20190105235527.1"><vh>&lt;&lt;printing&gt;&gt;</vh></v>
+</v>
 <v t="40323230.20171027160344.1" a="E"><vh>body</vh>
-<v t="40323230.20171027160523.1"><vh>Title</vh>
+<v t="leo.20190105234424.1"><vh>&lt;&lt;style&gt;&gt;</vh></v>
+<v t="leo.20190105235248.1"><vh>&lt;&lt;reveal&gt;&gt;</vh></v>
+<v t="40323230.20171027160523.1" a="E"><vh>Title</vh>
 <v t="40323230.20171117122904.1"><vh>Cover</vh></v>
 </v>
 </v>
@@ -139,57 +143,31 @@ Author: kmol
 
 </t>
 <t tx="40323230.20171027160338.1">&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
-    &lt;link rel="icon" href="pyslvs/icon.png"&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-    &lt;link rel="stylesheet" href="css/reveal.css"&gt;
-    &lt;link rel="stylesheet" href="css/theme/serif.css"&gt;
-    &lt;!-- Theme used for syntax highlighting of code --&gt;
-    &lt;link rel="stylesheet" href="lib/css/zenburn.css"&gt;
-    &lt;!-- Printing and PDF exports --&gt;
-    &lt;script&gt;
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    &lt;/script&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
+&lt;link rel="icon" href="images/icon.png"&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;link rel="stylesheet" href="css/reveal.css"&gt;
+&lt;link rel="stylesheet" href="css/theme/serif.css"&gt;
+&lt;!-- Theme used for syntax highlighting of code --&gt;
+&lt;link rel="stylesheet" href="lib/css/zenburn.css"&gt;
+&lt;script&gt;
+&lt;&lt;printing&gt;&gt;
+&lt;/script&gt;
 &lt;/head&gt;
 </t>
 <t tx="40323230.20171027160344.1">&lt;body&gt;
 &lt;style&gt;
-/*頁碼*/
-.reveal .slide-number {
-  font-size : 24pt;
-  position : absolute;
-  right : 2em;
-  top : 1em;
-  color : black;
-  background-color : transparent;
-}
+&lt;&lt;style&gt;&gt;
 &lt;/style&gt;
 
-&lt;div class="reveal"&gt;
-&lt;div class="slides"&gt;
+&lt;div class="reveal"&gt;&lt;div class="slides"&gt;
 @others
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 &lt;script src="lib/js/head.min.js"&gt;&lt;/script&gt;
 &lt;script src="js/reveal.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-    Reveal.initialize({
-        history: true,
-        transition: 'linear',
-        dependencies: [
-            { src: 'plugin/markdown/marked.js' },
-            { src: 'plugin/markdown/markdown.js' },
-            { src: 'plugin/notes/notes.js', async: true },
-            { src: 'plugin/math/math.js', async: true },
-            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        ]
-    });
-    Reveal.configure({ slideNumber: 'c/t' });
+&lt;&lt;reveal&gt;&gt;
 &lt;/script&gt;
 &lt;/body&gt;
 </t>
@@ -205,6 +183,41 @@ Title
 
 Author
 &lt;/textarea&gt;&lt;/section&gt;
+</t>
+<t tx="leo.20190105234424.1">@language css
+/*page number*/
+.reveal .slide-number {
+  font-size: 24pt;
+  position: absolute;
+  right: 2em;
+  top: 1em;
+  color: black;
+  background-color: transparent;
+}
+</t>
+<t tx="leo.20190105235248.1">@language javascript
+Reveal.initialize({
+    history: true,
+    transition: 'linear',
+    controls: true,
+    slideNumber: 'c/t',
+    dependencies: [
+        {src: 'plugin/markdown/marked.js'},
+        {src: 'plugin/markdown/markdown.js'},
+        {src: 'plugin/notes/notes.js', async: true},
+        {src: 'plugin/math/math.js', async: true},
+        {src: 'plugin/highlight/highlight.js', async: true, callback: () =&gt; {
+            hljs.initHighlightingOnLoad();
+        }}
+    ]
+});
+</t>
+<t tx="leo.20190105235527.1">@language javascript
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css';
+document.getElementsByTagName('head')[0].appendChild(link);
 </t>
 </tnodes>
 </leo_file>
