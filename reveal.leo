@@ -18,8 +18,8 @@
 <v t="leo.20190105235527.1"><vh>&lt;&lt;printing&gt;&gt;</vh></v>
 </v>
 <v t="40323230.20171027160344.1" a="E"><vh>body</vh>
-<v t="leo.20190105234424.1"><vh>&lt;&lt;style&gt;&gt;</vh></v>
 <v t="leo.20190105235248.1"><vh>&lt;&lt;reveal&gt;&gt;</vh></v>
+<v t="leo.20190105234424.1"><vh>&lt;&lt;style&gt;&gt;</vh></v>
 <v t="40323230.20171027160523.1" a="E"><vh>Title</vh>
 <v t="40323230.20171117122904.1"><vh>Cover</vh></v>
 </v>
@@ -153,6 +153,16 @@ Author
 &lt;/textarea&gt;&lt;/section&gt;
 </t>
 <t tx="leo.20190105234424.1">@language css
+.reveal h1 { font-size: 40pt; }
+.reveal h2 { font-size: 35pt; }
+.reveal h3 { font-size: 30pt; }
+.reveal h4 { font-size: 25pt; }
+.reveal p, .reveal li, .reveal table { font-size: 20pt; }
+.reveal strong { color: red; }
+.reveal section img {
+  border: none;
+  box-shadow: none!important;
+}
 /*page number*/
 .reveal .slide-number {
   font-size: 24pt;
